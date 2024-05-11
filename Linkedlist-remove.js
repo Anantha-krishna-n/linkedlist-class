@@ -61,7 +61,7 @@ const node=new Node(value)
     }
  }
 
-   removeFrom(value,index){
+   removeFrom(index){
        if(index < 0 || index >=this.size){
         return null
        }
@@ -106,8 +106,13 @@ list.print()
 list.insert(10,0)
 list.insert(20,0)
 list.insert(30,1)
-
+list.insert(40,2)
+console.log(list.removeFrom(10))
 list.print()
+list.removeFrom(1)
+list.print()
+
+
 
 
 
