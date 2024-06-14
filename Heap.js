@@ -54,7 +54,13 @@ class Heap {
           index = largest;
         }
       }
-    
+      heapSort(){
+        let sorted = []
+        while(this.values.length){
+          sorted.unshift(this.extractMax())
+        } 
+        return sorted
+      }
         print(){
             console.log(this.values)
         }

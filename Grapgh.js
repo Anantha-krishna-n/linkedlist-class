@@ -38,6 +38,41 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
     }
+    BFS(start){
+        let queue=[start]
+        let result=[]
+        let visited={}
+        visited[start]=true
+        while(queue.length){
+            let curr=queue.shift()
+            result.push(curr)
+            this.adjacencyList[curr].forEach(neighbour => {
+                if(!visited[neighbour]){
+                    visited[neighbour]=true
+                    queue.push(neighbour)
+                }
+
+            });
+        }
+        return result
+    }
+    DFS(start) {
+        let result = [];
+        let visited = {};
+        
+        const traverse = (vertex) => {
+            if (!vertex) return;
+            visited[vertex] = true;
+            result.push(vertex);
+            this.adjacencyList[vertex].forEach(neighbour => {
+                if (!visited[neighbour]) {
+                    traverse(neighbour);
+                }
+            });
+        };
+        traverse(start);
+        return result;
+    }
 
     display() {
         for (let vertex in this.adjacencyList) {
@@ -54,9 +89,15 @@ graph.addVertex(40);
 graph.addEdge(10, 40);
 graph.addEdge(20, 30);
 graph.display();
-console.log("After removing edge 10-40:");
-graph.removeEdge(10, 40);
-graph.display();
-console.log("After removing vertex 20:");
-graph.removeVertex(20);
-graph.display();
+console.log("BFS starting from vertex 10:");
+console.log(graph.BFS(10));
+console.log("DFS starting from vertex 10:");
+console.log(graph.DFS(10));
+
+
+// console.log("After removing edge 10-40:");
+// graph.removeEdge(10, 40);
+// graph.display();
+// console.log("After removing vertex 20:");
+// graph.removeVertex(20);
+// graph.display();
