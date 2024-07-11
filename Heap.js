@@ -73,9 +73,9 @@ heap.insert(15);
 heap.insert(65);
 heap.insert(40);
 heap.insert(30);
-    
-   heap.print()
-   
+heap.print()
+console.log(heap.heapSort())
+
 
    
 
